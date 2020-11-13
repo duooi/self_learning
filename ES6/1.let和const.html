@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <script>
+    /**
+    * let和const
+    * let和const声明的变量没有提升机制，只能在声明后访问
+    * let修饰变量，const修饰常量，并且const在声明的同时要赋值，const在声明引用类型时不能修改引用，但可以修改值
+    * let和const存在块级作用域，作用域外无法访问
+    */
+
+    console.log(num1);
+
+    var num1 = 10;
+    let num2 = 20;
+
+    num2 = 10;
+
+    console.log(num2);
+
+    const num3 = 5;
+
+    // num3 = 10;
+
+    console.log(num3);
+
+    const num4 = {
+      name:'hhh'
+    };
+
+    // num4 = {};
+    num4.name = 'aaa';
+
+    console.log(num4);
+
+    {
+      let num5 = '111';
+    }
+
+    // console.log(num5);
+
+    var lis = document.getElementsByTagName('li');
+
+    for(var i=0;i<5;i++){
+      lis[i].onclick = function(){
+        console.log(i);
+      };
+    }
+
+    for(let i=0;i<5;i++){
+      lis[i].onclick = function(){
+        console.log(i);
+      };
+    }
+
+    function bar(x=y,y=2){}
+
+    // bar();
+
+    // var x = x;
+
+    // console.log(x);
+
+    // let x = x;
+
+    var a = 1;
+
+    console.log(window.a);
+
+    // 隐形全局变量可以删除，显示全局变量不可以删除
+    b = 2;
+
+    console.log(window.b);
+
+    delete a;
+    // delete b;
+
+    console.log(a,b);
+
+  </script>
+</body>
+</html>

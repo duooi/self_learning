@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>body{font-size:10px}</style>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+  {{ showArr1 }}
+  {{ showArr2 }}
+  {{ showArr3 }}
+  </div>
+
+  <script>
+   var vm = new Vue({
+    el: '#app',
+    data: {
+      arr:[6,2,1,7,9,3,4]
+    },
+    methods: {},
+    computed:{
+      showArr1(){
+        var res = 0;
+        for(var i in this.arr){
+           res += this.arr[i];
+        }
+        return res;
+      },
+      showArr2(){
+        var res = 0;
+        for(var i of this.arr){
+           res += i;
+        }
+        return res;
+      },
+      showArr3(){
+        return this.arr.reduce((pre,item,arr)=>{
+          return pre + item;
+        },0);
+      }
+    }
+   });
+  </script>
+</body>
+</html>

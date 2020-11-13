@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <cpn>
+            <p>我不好</p>
+            <p slot="sure">你确定？</p>
+        </cpn>
+        <cpn>
+            <p>我很好</p>
+        </cpn>
+        <p>{{name1}}</p>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <slot name="sure"><p>你好啊</p></slot>
+            <slot><p>吃了早饭了吗？</p></slot>
+            <p>{{name2}}</p>
+        </div>
+    </template>
+    <script src='../node_modules/vue/dist/vue.js'></script>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                name1:'Vue'
+            },
+            components:{
+                cpn:{
+                    template:'#cpn',
+                    data(){
+                        return{
+                            name2:'Vue cpn'
+                        }
+                    },
+                    methods:{}
+                }
+            }
+        });
+    </script>
+</body>
+</html>

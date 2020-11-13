@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>body{font-size:10px}</style>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+    <ul>
+      <li v-for="item in score">
+        <span>{{item.name}}</span>
+        <span v-if="item.score >= 90">优秀</span>
+        <!-- <span></span> -->
+        <span v-else-if="item.score > 80 && item.score < 90">良好</span>
+        <span v-else>合格</span>
+      </li>
+    </ul>
+    <br>
+    <div>
+      <label for="" v-if="isUser">
+        用户名：<input type="text" id="" placeholder="请输入用户名" key="username">
+      </label>
+      <label for="" v-else>
+        邮箱：<input type="email" name="" id="" placeholder="请输入邮箱" key="email">
+      </label>
+    </div>
+  </div>
+
+  <script>
+   var vm = new Vue({
+    el: '#app',
+    data: {
+      isUser:true,
+      score:[
+        {
+          name:'张三',
+          score:99
+        },
+        {
+          name:'李四',
+          score:85
+        },
+        {
+          name:'王五',
+          score:60
+        }
+      ]
+    },
+    methods: {}
+   });
+  </script>
+</body>
+</html>

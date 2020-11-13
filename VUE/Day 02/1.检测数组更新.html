@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>body{font-size:10px}</style>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+  {{ arr }} <br>
+  <button @click="push">push</button>
+  <button @click="pop">pop</button>
+  <button @click="shift">shift</button>
+  <button @click="unshift">unshift</button>
+  <button @click="reverse">reverse</button>
+  <button @click="sort">sort</button>
+  <button @click="splice">splice</button>
+  <button @click="set">set</button>
+  </div>
+
+  <script>
+   var vm = new Vue({
+    el: '#app',
+    data: {
+      arr:[6,9,4,1,2,3,8]
+    },
+    methods: {
+      push(){
+        this.arr.push(4);
+      },
+      pop(){
+        this.arr.pop();
+      },
+      shift(){
+        this.arr.shift();
+      },
+      unshift(){
+        this.arr.unshift(1);
+      },
+      sort(){
+        this.arr.sort();
+      },
+      reverse(){
+        this.arr.reverse();
+      },
+      set(){
+        Vue.set(this.arr,'5',8);
+      },
+      splice(){
+        this.arr.splice(1,1,5);
+      }
+    }
+   });
+  </script>
+</body>
+</html>

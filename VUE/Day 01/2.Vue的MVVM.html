@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>body{font-size:12px}</style>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <!-- Vue中的MVVM -->
+  <div id ="app">
+    <!-- v-model -->
+    <label for="">
+      <input type="text" v-model="num1"><br>
+      {{num1}}
+    </label>
+
+    <br>
+    <!-- v-model的双向绑定原理 -->
+    <label for="">
+      <input type="text" :value="num2" @input="num2 = $event.target.value"><br>
+      {{num2}}
+    </label>
+
+  </div>
+
+  <script>
+   var vm = new Vue({
+    el: '#app',
+    data: {
+      num1:0,
+      num2:0
+    },
+    methods: {}
+   });
+  </script>
+</body>
+</html>

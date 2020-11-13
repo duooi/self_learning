@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="main.js"></script>
+    <script src="aaa.js"></script>
+    <script src="bbb.js"></script>
+    <script>
+        // 由于变量覆盖导致file_name为bbb
+        // console.log(file_name);
+
+        // 匿名函数
+        console.log(
+            file_name,
+            moduleA.file_name,
+            moduleB.file_name
+        )
+
+        
+    </script>
+</body>
+</html>

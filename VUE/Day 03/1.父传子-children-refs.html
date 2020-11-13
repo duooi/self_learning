@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        {{ hello }}
+        <cpn1></cpn1>
+        <cpn2></cpn2>
+        <button @click="btnClick">发送</button>
+        <br>
+        <cpn ref="aaa"></cpn>
+        <cpn ref="bbb"></cpn>
+        <cpn ref="ccc"></cpn>
+    </div>
+
+    <template id="cpn1">
+        <div>
+            {{name}}
+        </div>
+    </template>
+    <template id="cpn2">
+        <div>
+            {{name}}
+        </div>
+    </template>
+    <template id="cpn">
+        <div>
+            {{name}}
+        </div>
+    </template>
+    <script src='../node_modules/vue/dist/vue.js'></script>
+    <script>
+        // 创建子组件
+        const cpn1 = {
+            template:'#cpn1',
+            data(){
+                return {
+                    name:'cpn1'
+                }
+            },
+            methods:{
+                showMessage(){
+                    console.log('cpn1')
+                }
+            }
+        };
+        const cpn2 = {
+            template:'#cpn2',
+            data(){
+                return {
+                    name:'cpn2'
+                }
+            },
+            methods:{
+                showMessage(){
+                    console.log('cpn2')
+                }
+            }
+        };
+        const cpn = {
+            template:'#cpn',
+            data(){
+                return {
+                    name:'cpn'
+                }
+            },
+            methods:{
+                showMessage(){
+                    console.log('cpn')
+                }
+            }
+        }
+
+
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                hello:'Hello Vuejs'
+            },
+            components:{
+                cpn1,
+                cpn2,
+                cpn
+            },
+            methods:{
+                btnClick(){
+                    console.log(this.$children)
+                    console.log(this.$refs)
+
+                    this.$refs.aaa.showMessage()
+                }
+            }
+        });
+    </script>
+</body>
+</html>

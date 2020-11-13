@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <cpn></cpn>
+        <cpn>
+            <template slot-scope="slot">
+                <span>{{slot.data.join('-')}}</span>
+            </template>
+        </cpn>
+        <cpn></cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <slot :data="books">
+                <ul>
+                    <li v-for="item in books">
+                        {{ item }}
+                    </li>
+                </ul>
+            </slot>
+        </div>
+    </template>
+    <script src='../node_modules/vue/dist/vue.js'></script>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+            },
+            components:{
+                cpn:{
+                    template:'#cpn',
+                    data(){
+                        return{
+                            books:['水浒传','三国演义','红楼梦','西游记']
+                        }
+                    },
+                    methods:{}
+                }
+            }
+        });
+    </script>
+</body>
+</html>

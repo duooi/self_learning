@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>body{font-size:10px}</style>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+    <cpn2></cpn2>
+  </div>
+
+  <template id="cpn1">
+    <div>
+      <h1>Hello cpn1</h1>
+      <p>{{num}}</p>
+      <button @click="click">点击发送</button>
+    </div>
+  </template>
+  <template id="cpn2">
+    <div>
+      <cpn1 :d="data" @childclick="parent"></cpn1>
+    </div>
+  </template>
+
+  <script>
+    const cpn1 = {
+      template:'#cpn1',
+      props:{
+        d:{
+          type:Number,
+          default:0
+        }
+      },
+      data(){
+        return {
+          num:this.$props['d']
+        };
+      },
+      methods:{
+        click(){
+          this.$emit('childclick','我从子组件传上来了！');
+        }
+      }
+    };
+
+    const cpn2 = {
+      template:'#cpn2',
+      data(){
+        return {
+          data:1
+        };
+      },
+      methods:{
+        parent(params){
+          console.log(params);
+        }
+      },
+      components:{
+        cpn1
+      }
+    };
+
+   var vm = new Vue({
+    el: '#app',
+    data: {},
+    methods: {},
+    components:{
+      cpn2
+    }
+   });
+  </script>
+</body>
+</html>

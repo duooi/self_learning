@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+    * 数组解构 
+    * 对象解构
+    * 
+    */
+
+    var [a,b,c] = [1,2,3];
+
+    var [foo, [[bar], baz]] = [1, [[2], 3]];
+
+    var [,,third] = [1,2,3];
+
+    var [x,y,z] = [1,,3];   // 不完全解构
+
+    var [num,...arr] = [1,2,3,4];
+
+    var [x=2,y=2] = [1,1];
+
+    var [num1=1,num2=1] = [undefined,null];
+
+    console.log(num1,num2);
+
+    function f(){
+      console.log('f执行了..');
+    }
+
+    var [x=f()] = [1];
+
+    console.log(x);
+
+    var [num3=num4,num4=2] = [];
+
+    console.log(num3,num4);
+
+    var obj = {
+      foo:'foo'
+    };
+
+    var { foo:foo } = obj;
+
+    var { foo:baz } = { foo:'123' };
+
+    console.log(foo,baz);
+
+
+
+
+  </script>
+</body>
+</html>

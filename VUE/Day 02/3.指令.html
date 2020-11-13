@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  body{font-size:10px}
+  .color{
+    color:red;
+  }
+  .fontWeight{
+    font-weight: 700;
+  }
+  </style>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+    <!-- v-once只执行一次绑定，后面值即使更新也不同步 -->
+    <p v-once>{{exm1}}</p>
+    <!-- v-html会将标签内部内容替换成指定的html模板 -->
+    <p v-html="temp1">你好</p>
+    <!-- v-text会将标签内部内容替换成绑定的文本模板 -->
+    <p v-text="temp2">你好</p>
+    <!-- v-pre不会解析Mustache语法，原封不动的展示出来 -->
+    <p v-pre>{{exm1}}</p>
+    <!-- v-bind:class动态绑定元素class属性 -->
+    <p v-bind:class="[color,fontWeight]">v-bind:class模板1</p>
+    <p v-bind:class="{color:isColor}">v-bind:class模板2</p>
+    <p v-bind:class="[color,{fontWeight:isWeight}]">v-bind:class模板3</p>
+    <!-- v-bind:style动态绑定元素style属性 -->
+    <p :style="[obj1,obj2]">v-bind:style模板1</p>
+    <p :style="{ color:'red',fontWeight:'bold' }">v-bind:style模板2</p>
+    <p :style="obj3">v-bind:style模板3</p>
+    <!-- v-on绑定处理事件 -->
+    <div @click="click2"><button v-on:click.stop="click1(1,2,$event)">点击</button></div>
+    <div><a href="#" @click.prevent="click2">点击</a></div>
+    
+  </div>
+
+  <script>
+   var vm = new Vue({
+    el: '#app',
+    data: {
+      obj1:{ color:'red' },
+      obj2:{ fontWeight:'bold' },
+      obj3:{
+        color:'red',
+        fontWeight:'bold'
+      },
+      exm1:'example1',
+      temp1:`
+        <h1>这是v-html指令</h1>
+      `,
+      temp2:'这是v-text指令',
+      color:'color',
+      fontWeight:'fontWeight',
+      isColor:true,
+      isWeight:true
+    },
+    methods: {
+      click1:function(x,y,e){
+        console.log('clicked!');
+        // console.log(e,x,y);
+      },
+      click2(){
+        console.log('parent clicked!');
+      }
+    }
+   });
+  </script>
+</body>
+</html>

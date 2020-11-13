@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>body{font-size:10px}</style>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+  {{ hello }}
+  {{ 1 + 2 }}
+  {{ hello + 's' }}
+  {{ 1 > 0 ? hello : '' }}
+  </div>
+
+  <script>
+   var vm = new Vue({
+    el: '#app',
+    data: {
+      hello:'Hello Vuejs'
+    },
+    methods: {}
+   });
+  </script>
+</body>
+</html>

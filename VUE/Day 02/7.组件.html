@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>body{font-size:10px}</style>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+    <cpn1></cpn1>
+    <cpn2></cpn2>
+  </div>
+
+  <!-- 自定义模板1 -->
+  <script type="text/x-template" id="template1">
+    <div>
+      <h1>Vue组件</h1>
+    </div>
+  </script>
+
+  <template id="template2">
+    <div>
+      <h1>Vue组件2</h1>
+    </div>
+  </template>
+
+  <script>
+    // 创建一个组件构造器,包含组件的内部信息
+
+    const cpn2 = Vue.extend({
+      template:'#template2',
+      data(){
+        return{}
+      },
+      methods:{}
+    });
+
+    // 全局注册组件，起名
+    Vue.component('cpn1',{
+      template:'#template1',
+      data(){
+        return{}
+      },
+      methods:{}
+    });
+
+   var vm = new Vue({
+    el: '#app',
+    data: {},
+    methods: {},
+    // 局部注册组件
+    components:{
+      cpn2:{
+        template:'#template2',
+        data(){
+          return{}
+        },
+        methods:{}
+      }
+    }
+   });
+  </script>
+</body>
+</html>

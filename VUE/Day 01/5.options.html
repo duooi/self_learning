@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>body{font-size:10px}</style>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+  {{ hello }}
+  {{ showHello }}
+  {{ showHello }}
+  {{ showHello }}
+  {{ click() }}
+  {{ click() }}
+  <button @click="click">按钮</button>
+  </div>
+
+  <script>
+   var vm = new Vue({
+    el: document.getElementById('app'),
+    data: {
+      hello:'Hello Vuejs'
+    },
+    methods: {
+      click(){
+        console.log('methods');
+        return this.hello + ' hhh';
+      }
+    },
+    computed:{
+      showHello:{
+        get(){
+          console.log('computed');
+          return this.hello + ' hhh';
+        },
+        set(str){
+          this.hello += str;
+        }
+      }
+    }
+   });
+  </script>
+</body>
+</html>
