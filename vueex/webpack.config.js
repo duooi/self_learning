@@ -1,4 +1,5 @@
 const {resolve} = require('path')
+const Webpack = require('webpack')
 
 module.exports = {
     entry:'./src/main.js',
@@ -35,7 +36,20 @@ module.exports = {
                         presets:['@babel/preset-env']
                     }
                 }
+            },
+            {
+                test:/\.vue$/,
+                use:['vue-loader']
             }
         ]
+    },
+    plugins:[
+      new Webpack.BannerPlugin('最终版权归Duooi所有')  
+    ],
+    resolve:{
+        extensions:['.js','.css','.vue'],
+        alias:{
+            'vue$':'vue/dist/vue.esm.js'
+        }
     }
 }
