@@ -7,13 +7,11 @@
 </head>
 <body>
     <div id='app'>
-        <cpn></cpn>
         <cpn>
             <template slot-scope="slot">
-                <span>{{slot.data.join('-')}}</span>
+                {{slot.data.join('-')}}
             </template>
         </cpn>
-        <cpn></cpn>
     </div>
 
     <template id="cpn">
@@ -21,27 +19,26 @@
             <slot :data="books">
                 <ul>
                     <li v-for="item in books">
-                        {{ item }}
+                        {{item}}
                     </li>
                 </ul>
             </slot>
         </div>
-    </template>
+    </template>    
     <script src='../node_modules/vue/dist/vue.js'></script>
     <script>
         const vm = new Vue({
             el:'#app',
-            data:{
-            },
+            data:{},
+            methods:{},
             components:{
                 cpn:{
                     template:'#cpn',
                     data(){
-                        return{
-                            books:['水浒传','三国演义','红楼梦','西游记']
+                        return {
+                            books:['三国演义','水浒传','西游记','红楼梦']
                         }
-                    },
-                    methods:{}
+                    }
                 }
             }
         });
